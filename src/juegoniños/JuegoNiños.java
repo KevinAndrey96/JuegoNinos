@@ -1,16 +1,21 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+En el parque de un barrio de Bogotá hay un nuevo juego para que los niños aprendan a contar. Consiste en una regla gigante con marcas entre 0 y N. El juego de los niños consiste en moverse paso a paso sobre las marcas de la regla. Ellos mantienen una misma dirección de desplazamiento a menos que lleguen a uno de los extremos de la regla. En ese caso, ellos cambian de dirección. 
+Se le ha solicitado desarrollar un programa en Java para simular el juego. El programa recibe como datos la cantidad de marcas en la regla, la posición y dirección de desplazamiento iniciales y cuántos pasos dará el niño en el juego. Así, los datos que se ingresan son:
+
+•	N es la marca más alta de la regla
+•	P es la posición inicial del niño (0 < P < N) 
+•	d la dirección con la que el niño empieza su desplazamiento, d = 1 indica que el niño se desplaza inicialmente a la derecha, d = −1 indica que el niño se desplaza inicialmente a la izquierda. 
+•	M es el número de pasos que da el niño después del momento inicial. 
+
+Su programa debe reportar por pantalla la posición del niño después de haber dado M pasos. 
+Ejemplo:
+Datos leídos: N=5, P=4, d=1, M=4           
+Reporte en pantalla: Al finalizar, el niño estará en la posición 2
  */
 package juegoniños;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Kevin
- */
 public class JuegoNiños {
 
     private static String Solicita(String m) {
@@ -22,11 +27,9 @@ public class JuegoNiños {
     }
 
     private static String Direccion(int d) {
-        if(d==1)
-        {
+        if (d == 1) {
             return "Adelante";
-        }else
-        {
+        } else {
             return "Atrás";
         }
     }
@@ -61,23 +64,22 @@ public class JuegoNiños {
                 Muestra("Error. Por favor ingrese un valor valido");
             }
         } while (M < 0);
-        
-        Muestra("El niño comienza en la posición: "+P+"\nCamina hacia "+Direccion(d));
+
+        Muestra("El niño comienza en la posición: " + P + "\nCamina hacia " + Direccion(d));
         while (M > 0) {
             if (d == 1) {
                 if (P == N) {
                     //Cambia de dirección: Ahora se devuelve
-                    d=-1;
+                    d = -1;
                     P -= 1;
                 } else {
                     //Sigue hacia adelante
                     P += 1;
                 }
-            }else
-            {
+            } else {
                 if (P == 0) {
                     //Cambia de dirección: Ahora sigue hacia adelante
-                    d=1;
+                    d = 1;
                     P += 1;
                 } else {
                     //Sigue hacia atrás
@@ -86,8 +88,7 @@ public class JuegoNiños {
             }
 
             M -= 1;
-            //Muestra(P + " " + d + " " + M);
-            Muestra("El niño ahora está en la posición: "+P+"\nCamina hacia "+Direccion(d));
+            Muestra("El niño ahora está en la posición: " + P + "\nCamina hacia " + Direccion(d));
         }
 
         Muestra("Al finalizar, el niño estará en la posición " + P);
